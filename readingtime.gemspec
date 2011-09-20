@@ -6,10 +6,10 @@ Gem::Specification.new do |s|
   s.name        = "readingtime"
   s.version     = Readingtime::VERSION
   s.authors     = ["Gareth Rees"]
-  s.email       = ["reesG12@cardiff.ac.uk"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.email       = ["gareth@garethrees.co.uk"]
+  s.homepage    = "http://github.com/garethrees/readingtime"
+  s.summary     = %q{Estimates reading time}
+  s.description = %q{Estimates reading time of a Ruby String object}
 
   s.rubyforge_project = "readingtime"
 
