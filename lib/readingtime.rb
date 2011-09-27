@@ -11,12 +11,8 @@ module Readingtime
     (words % 200 / (200 / 60)).floor
   end
 
-  def self.time_in_words(time)
-    if time < 10
-      return "0#{time}"
-    else
-      return time.to_s
-    end
+  def self.format_seconds(seconds)
+    '%d:%02d' % seconds.divmod(60)
   end
 
 end

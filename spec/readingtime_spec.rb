@@ -24,8 +24,11 @@ describe Readingtime do
     Readingtime.seconds(words).should == (words % 200 / (200 / 60)).floor
   end
 
-  it "should display the reading time in a readable format" do
-    short_text.reading_time.should == "0:23"
+  it "should format the reading time in an HH:MM format" do
+    Readingtime.format_seconds(3600).should == "60:00"
+    Readingtime.format_seconds(60).should == "1:00"
+    Readingtime.format_seconds(10).should == "0:10"
+    Readingtime.format_seconds(1).should == "0:01"
   end
 
 end

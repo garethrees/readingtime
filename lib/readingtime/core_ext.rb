@@ -5,7 +5,7 @@ String.class_eval do
     minutes = Readingtime.minutes(word_size)
     seconds = Readingtime.seconds(word_size)
     
-    return minutes.to_s + ":" + Readingtime.time_in_words(seconds)
+    return Readingtime.format_seconds((minutes + seconds))
     
   end
 
