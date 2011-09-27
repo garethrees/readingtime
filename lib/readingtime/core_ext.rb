@@ -1,11 +1,16 @@
 String.class_eval do
   def reading_time
-    word = self.scan(/(\w|-)+/).size
+    word_size = self.calculate_size
     
-    minutes = (word / 200).floor
-    seconds = (word % 200 / (200 / 60)).floor
+    minutes = Readingtime.minutes(word_size)
+    seconds = Readingtime.seconds(word_size)
     
-    return minutes.to_s + ":" + seconds.to_s
+    return minutes.to_s + ":" + Readingtime.time_in_words(seconds)
     
   end
+
+  def calculate_size
+    self.scan(/(\w|-)+/).size
+  end
+
 end
