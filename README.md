@@ -12,10 +12,4 @@ Full credit goes to [Brian Cray](http://briancray.com/2010/04/09/estimated-readi
 
 	@words = "Lorem ipsum dolor sit amet"
 	@words.reading_time
-		=> "0:1"
-
-
-## Bugs
-
-* As in the example, second ranges under ten seconds are formatted as `0:1` instead of `0:01`
-* Ideally, `reading_time` should return a `Time` object so it can be formatted with `strftime`
+		=> "0:01"
