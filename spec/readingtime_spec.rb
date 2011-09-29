@@ -8,11 +8,14 @@ describe Readingtime do
   let(:short_text) { "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
   let(:long_text)  { ("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." * 100) }
 
+  it "should calculate the reading time of some text" do
+    short_text.reading_time.should == "0:23"
+    long_text.reading_time.should == "1:07"
+  end
 
   it "should calculate the length of the string input" do
     short_text.calculate_size.should == short_text.scan(/(\w|-)+/).size
   end
-
 
   it "should calculate the number of minutes the reading should take" do
     words = short_text.calculate_size
@@ -29,6 +32,12 @@ describe Readingtime do
     Readingtime.format_seconds(60).should == "1:00"
     Readingtime.format_seconds(10).should == "0:10"
     Readingtime.format_seconds(1).should == "0:01"
+  end
+
+  it "should accept an options hash to format the output" do
+    short_text.reading_time(:format => :basic).should == "0:23"
+    short_text.reading_time(:format => :short).should == "23 seconds"
+    short_text.reading_time(:format => :long).should == "0 minutes and 23 seconds"
   end
 
 end
