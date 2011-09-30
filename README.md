@@ -20,7 +20,7 @@ I use [iA Writer](http://iawriter.com "iA Writer") and find the *estimated readi
 		=> true
 	> @words = "Lorem ipsum dolor sit amet"
 	> @words.reading_time
-		=> "0:01"
+		=> "00:01"
 
 ### In Your App
 
@@ -38,6 +38,18 @@ I use [iA Writer](http://iawriter.com "iA Writer") and find the *estimated readi
 And voila!
 
 ![Screenshot of readingtime in use](https://github-screenshots.s3.amazonaws.com/readingtime-view.png "Screenshot of readingtime in use")
+
+### Options
+
+You can also send in options to modify the formatting.
+
+	# Default output
+	@article.body.reading_time :format => :basic
+	=> "03:36"
+	
+	# Longer text output
+	@article.body.reading_time :format => :long
+	=> "3 minutes and 36 seconds"
 
 ## Thanks
 
