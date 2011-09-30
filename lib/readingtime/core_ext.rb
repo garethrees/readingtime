@@ -1,11 +1,17 @@
 String.class_eval do
-  def reading_time
+  def reading_time(options = {})
+    format_options =  options[:format] || :basic
+
     word_size = self.calculate_size
-    
     minutes = Readingtime.minutes_in_seconds(word_size)
     seconds = Readingtime.seconds(word_size)
     
-    return Readingtime.format_seconds((minutes + seconds))
+    case format_options
+      when :basic
+        Readingtime.format_seconds((minutes + seconds))
+      when :long
+        Readingtime.format_words((minutes + seconds))
+    end
     
   end
 

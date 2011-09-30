@@ -16,4 +16,8 @@ module Readingtime
     '%02d:%02d' % seconds.divmod(60)
   end
 
+  def self.format_words(seconds)
+    '%d minutes and %d seconds' % seconds.divmod(60)
+  end
+
 end
