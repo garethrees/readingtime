@@ -3,9 +3,8 @@ require "readingtime/core_ext"
 
 module Readingtime
 
-  # FIXME: Calculate minutes_in_seconds
-  def self.minutes(words)
-    (words / 200).floor
+  def self.minutes_in_seconds(words)
+    (words / 200).floor * 60
   end
 
   def self.seconds(words)
@@ -14,7 +13,7 @@ module Readingtime
 
   # TODO: Account for HH:MM:00
   def self.format_seconds(seconds)
-    '%d:%02d' % seconds.divmod(60)
+    '%02d:%02d' % seconds.divmod(60)
   end
 
 end
