@@ -5,30 +5,37 @@ require "readingtime"
 
 
 describe Readingtime do
-  let(:short_text) { "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
-  let(:long_text)  { ("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." * 100) }
+  let(:two_hundred_words) { ("Lorem " * 200) }
 
-
-  it "should calculate the length of the string input" do
-    short_text.calculate_size.should == short_text.scan(/(\w|-)+/).size
+  it "should calculate the reading time of some text" do
+    two_hundred_words.reading_time.should == "01:00"
   end
 
+  it "should calculate the length of the string input" do
+    two_hundred_words.calculate_size.should == 200
+  end
 
   it "should calculate the number of minutes the reading should take" do
-    words = short_text.calculate_size
-    Readingtime.minutes(words).should == (words / 200).floor
+    words = two_hundred_words.calculate_size
+    Readingtime.minutes_in_seconds(words).should == 60
   end
 
   it "should calculate the remaining seconds the reading should take" do
-    words = short_text.calculate_size
-    Readingtime.seconds(words).should == (words % 200 / (200 / 60)).floor
+    words = two_hundred_words.calculate_size
+    Readingtime.seconds(words).should == 0
   end
 
-  it "should format the reading time in an HH:MM format" do
+  it "should format the reading time in an MM:SS format" do
     Readingtime.format_seconds(3600).should == "60:00"
-    Readingtime.format_seconds(60).should == "1:00"
-    Readingtime.format_seconds(10).should == "0:10"
-    Readingtime.format_seconds(1).should == "0:01"
+    Readingtime.format_seconds(60).should == "01:00"
+    Readingtime.format_seconds(10).should == "00:10"
+    Readingtime.format_seconds(1).should == "00:01"
   end
+
+  # it "should accept an options hash to format the output" do
+  #   short_text.reading_time(:format => :basic).should == "0:23"
+  #   short_text.reading_time(:format => :short).should == "23 seconds"
+  #   short_text.reading_time(:format => :long).should == "0 minutes and 23 seconds"
+  # end
 
 end
