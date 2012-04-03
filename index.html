@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Readingtime by garethrees</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/garethrees/readingtime">Fork Me on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Readingtime</h1>
+            <h2>Estimates reading time</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/garethrees/readingtime/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/garethrees/readingtime/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+      <span class="banner-fix"></span>
+
+      <section id="main_content">
+        <h1>Estimate Reading Time</h1>
+
+<p><a href="http://travis-ci.org/garethrees/readingtime"><img src="https://secure.travis-ci.org/garethrees/readingtime.png" alt="Build Status"></a></p>
+
+<p>I use <a href="http://iawriter.com" title="iA Writer">iA Writer</a> and find the <em>estimated reading time</em> feature pretty handy. I thought it would be cool to add at the top of my blog articles on the web as <a href="http://nicepaul.com" title="The personal blog of @nicepaul">others</a> do.</p>
+
+<h2>How to Use</h2>
+
+<p><a href="http://github.com/garethrees/readingtime" title="Gem to estimate reading time">readingtime</a> extends the Ruby String class, so you can call <code>reading_time</code> on any <code>String</code> object.</p>
+
+<h3>Install</h3>
+
+<pre><code>gem install readingtime
+</code></pre>
+
+<h3>In irb</h3>
+
+<pre><code>$ irb
+&gt; require 'readingtime'
+    =&gt; true
+&gt; @words = "Lorem ipsum dolor sit amet"
+&gt; @words.reading_time
+    =&gt; "00:01"
+</code></pre>
+
+<h3>In Your App</h3>
+
+<pre><code>&lt;article&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;&lt;%= @article.title %&gt;&lt;/h1&gt;
+        &lt;span class="readingtime"&gt;Estimated reading time – &lt;%= @article.body.reading_time %&gt;&lt;/span&gt;
+    &lt;/header&gt;
+
+    &lt;%= @article.body %&gt;
+
+&lt;/article&gt;
+</code></pre>
+
+<p>And voila!</p>
+
+<p><img src="https://github-screenshots.s3.amazonaws.com/readingtime-view.png" alt="Screenshot of readingtime in use" title="Screenshot of readingtime in use"></p>
+
+<h3>Options</h3>
+
+<p>You can also send in options to modify the formatting.</p>
+
+<pre><code># Default output
+@article.body.reading_time :format =&gt; :basic
+=&gt; "03:36"
+
+# Longer text output
+@article.body.reading_time :format =&gt; :long
+=&gt; "3 minutes and 36 seconds"
+</code></pre>
+
+<h2>Thanks</h2>
+
+<p>Credit goes to <a href="http://briancray.com/2010/04/09/estimated-reading-time-web-design" title="Brian Cray - Estimated Reading Time in Web Design">Brian Cray</a> for explaining how to do it in PHP.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/garethrees">garethrees</a> can be found on <a href="https://github.com/garethrees/readingtime">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
