@@ -7,10 +7,10 @@ String.class_eval do
     seconds = Readingtime.seconds(word_size)
     
     case format_options
-      when :basic
-        Readingtime.format_seconds((minutes + seconds))
-      when :long
-        Readingtime.format_words((minutes + seconds))
+    when :basic
+      Readingtime.format_seconds((minutes + seconds))
+    when :long
+      Readingtime.format_words((minutes + seconds))
     end
     
   end
