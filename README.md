@@ -37,7 +37,7 @@ I use [iA Writer](http://iawriter.com "iA Writer") and find the *estimated readi
 
 And voila!
 
-![Screenshot of readingtime in use](https://github-screenshots.s3.amazonaws.com/readingtime-view.png "Screenshot of readingtime in use")
+![Screenshot of readingtime in use](https://s3.amazonaws.com/github-screenshots/garethrees/readingtime/readingtime-view.png "Screenshot of readingtime in use")
 
 ### Options
 
