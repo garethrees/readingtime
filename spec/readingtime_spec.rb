@@ -40,7 +40,7 @@ describe Readingtime do
     two_hundred_words.reading_time(:format => :long).should == "1 minutes and 0 seconds"
     two_hundred_words.reading_time(:format => :approx).should == "1 minutes"
     three_hundred_words.reading_time(:format => :long).should == "1 minutes and 33 seconds"
-    three_hundred_words.reading_time(:format => :approx).should == "1 minutes"
+    three_hundred_words.reading_time(:format => :approx).should == "2 minutes"
   end
 
   it "should return a time in seconds when using approx with time less than 1 minute" do
