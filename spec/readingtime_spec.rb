@@ -7,6 +7,7 @@ require "readingtime"
 describe Readingtime do
   let(:two_hundred_words) { ("Lorem " * 200) }
   let(:three_hundred_words) { ("Lorem " * 300) }
+  let(:ten_words) { ("Lorem " * 10) }
 
   it "should calculate the reading time of some text" do
     two_hundred_words.reading_time.should == "01:00"
@@ -37,7 +38,13 @@ describe Readingtime do
   it "should accept an options hash to format the output" do
     two_hundred_words.reading_time(:format => :basic).should == "01:00"
     two_hundred_words.reading_time(:format => :long).should == "1 minutes and 0 seconds"
+    two_hundred_words.reading_time(:format => :approx).should == "1 minutes"
     three_hundred_words.reading_time(:format => :long).should == "1 minutes and 33 seconds"
+    three_hundred_words.reading_time(:format => :approx).should == "1 minutes"
+  end
+
+  it "should return a time in seconds when using approx with time less than 1 minute" do
+    ten_words.reading_time(:format => :approx).should == "3 seconds"
   end
 
 end

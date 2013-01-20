@@ -20,4 +20,12 @@ module Readingtime
     '%d minutes and %d seconds' % seconds.divmod(60)
   end
 
+  def self.format_approx(seconds)
+    if seconds > 59
+      '%d minutes' % (seconds/60).round
+    else 
+      '%d seconds' % seconds
+    end
+  end
+
 end
