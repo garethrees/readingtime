@@ -11,6 +11,8 @@ String.class_eval do
       Readingtime.format_seconds((minutes + seconds))
     when :long
       Readingtime.format_words((minutes + seconds))
+    when :approx
+      Readingtime.format_approx((minutes + seconds))
     end
     
   end
