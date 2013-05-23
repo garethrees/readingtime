@@ -1,7 +1,6 @@
 # Estimate Reading Time
 
-[![Build Status](https://secure.travis-ci.org/garethrees/readingtime.png)](http://travis-ci.org/garethrees/readingtime)
-
+[![Build Status](https://secure.travis-ci.org/garethrees/readingtime.png)](http://travis-ci.org/garethrees/readingtime) [![Code Climate](https://codeclimate.com/github/garethrees/coderwall_ruby.png)](https://codeclimate.com/github/garethrees/coderwall_ruby)
 
 I use [iA Writer](http://iawriter.com "iA Writer") and find the *estimated reading time* feature pretty handy. I thought it would be cool to add at the top of my blog articles on the web as [others](http://nicepaul.com "The personal blog of @nicepaul") do.
 
