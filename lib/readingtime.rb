@@ -1,5 +1,6 @@
-require "readingtime/version"
-require "readingtime/core_ext"
+Dir[File.dirname(__FILE__) + '/readingtime/*.rb'].each do |file|
+  require file
+end
 
 module Readingtime
 
