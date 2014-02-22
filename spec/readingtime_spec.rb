@@ -34,10 +34,18 @@ describe Readingtime do
     Readingtime.format_seconds(1).should == "00:01"
   end
 
+  it "should format the reading time in an array of hours, minutes, seconds" do
+    Readingtime.hms(3600).should == [1, 0, 0]
+    Readingtime.hms(60).should == [0, 1, 0]
+    Readingtime.hms(10).should == [0, 0, 10]
+    Readingtime.hms(1).should == [0, 0, 1]
+  end
+
   it "should accept an options hash to format the output" do
     two_hundred_words.reading_time(:format => :basic).should == "01:00"
     two_hundred_words.reading_time(:format => :long).should == "1 minutes and 0 seconds"
     three_hundred_words.reading_time(:format => :long).should == "1 minutes and 33 seconds"
+    two_hundred_words.reading_time(:format => :raw).should == [0, 1, 0]
   end
 
 end
