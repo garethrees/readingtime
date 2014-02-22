@@ -35,6 +35,22 @@ describe Readingtime do
     Readingtime.format_seconds(1).should == "00:01"
   end
 
+  it "should format the reading time in words" do
+    Readingtime.format_full([1, 0, 0]).should == "1 hr"
+    Readingtime.format_full([2, 0, 0]).should == "2 hrs"
+    Readingtime.format_full([1, 1, 0]).should == "1 hr 1 min"
+    Readingtime.format_full([2, 2, 0]).should == "2 hrs 2 mins"
+    Readingtime.format_full([1, 1, 1]).should == "1 hr 1 min 1 sec"
+    Readingtime.format_full([2, 2, 2]).should == "2 hrs 2 mins 2 secs"
+  end
+
+  it "should format the reading time in an array of hours, minutes, seconds" do
+    Readingtime.hms(3600).should == [1, 0, 0]
+    Readingtime.hms(60).should == [0, 1, 0]
+    Readingtime.hms(10).should == [0, 0, 10]
+    Readingtime.hms(1).should == [0, 0, 1]
+  end
+
   it "should accept an options hash to format the output" do
     two_hundred_words.reading_time(:format => :basic).should == "01:00"
     two_hundred_words.reading_time(:format => :long).should == "1 minutes and 0 seconds"
@@ -45,6 +61,8 @@ describe Readingtime do
 
   it "should return a time in seconds when using approx with time less than 1 minute" do
     ten_words.reading_time(:format => :approx).should == "3 seconds"
+    three_hundred_words.reading_time(:format => :full).should == '1 min 33 secs'
+    two_hundred_words.reading_time(:format => :raw).should == [0, 1, 0]
   end
 
 end
