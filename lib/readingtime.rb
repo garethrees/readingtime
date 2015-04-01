@@ -27,7 +27,12 @@ module Readingtime
   end
 
   def self.format_words(seconds)
-    '%d minutes and %d seconds' % seconds.divmod(60)
+    if seconds >= 60
+      '%d minutes and %d seconds' % seconds.divmod(60)
+    else
+      "#{ seconds } seconds"
+    end
+    
   end
 
   def self.format_approx(seconds)
