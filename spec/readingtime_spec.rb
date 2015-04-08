@@ -52,6 +52,7 @@ describe Readingtime do
   end
 
   it "should accept an options hash to format the output" do
+    ten_words.reading_time(:format => :long).should == "3 seconds"
     two_hundred_words.reading_time(:format => :basic).should == "01:00"
     two_hundred_words.reading_time(:format => :long).should == "1 minutes and 0 seconds"
     two_hundred_words.reading_time(:format => :approx).should == "1 minutes"
