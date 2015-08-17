@@ -3,6 +3,10 @@ Dir[File.dirname(__FILE__) + '/readingtime/*.rb'].each do |file|
 end
 
 module Readingtime
+  #TODO: move this to a configuration object
+  def self.reading_speed
+    200
+  end
 
   def self.hms(secs)
     h, m, s = 0, 0, 0
@@ -14,11 +18,11 @@ module Readingtime
   end
 
   def self.minutes_in_seconds(words)
-    (words / 200).floor * 60
+    (words / self.reading_speed).floor * 60
   end
 
   def self.seconds(words)
-    (words % 200 / (200 / 60)).floor
+    (words % self.reading_speed / (self.reading_speed / 60)).floor
   end
 
   # TODO: Account for HH:MM:00
