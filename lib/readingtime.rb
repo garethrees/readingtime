@@ -3,9 +3,24 @@ Dir[File.dirname(__FILE__) + '/readingtime/*.rb'].each do |file|
 end
 
 module Readingtime
-  #TODO: move this to a configuration object
-  def self.reading_speed
-    200
+  class << self
+    attr_accessor :configuration
+  end
+
+  def self.configure
+    yield(configuration)
+  end
+
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
+
+  class Configuration
+    attr_accessor :reading_speed
+
+    def initialize
+      @reading_speed = 200
+    end
   end
 
   def self.hms(secs)
@@ -18,11 +33,11 @@ module Readingtime
   end
 
   def self.minutes_in_seconds(words)
-    (words / self.reading_speed).floor * 60
+    (words / configuration.reading_speed).floor * 60
   end
 
   def self.seconds(words)
-    (words % self.reading_speed / (self.reading_speed / 60)).floor
+    (words % configuration.reading_speed / (configuration.reading_speed / 60)).floor
   end
 
   # TODO: Account for HH:MM:00

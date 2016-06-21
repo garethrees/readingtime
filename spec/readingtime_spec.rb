@@ -8,6 +8,7 @@ describe Readingtime do
   let(:two_hundred_words) { ("Lorem " * 200) }
   let(:three_hundred_words) { ("Lorem " * 300) }
   let(:ten_words) { ("Lorem " * 10) }
+  let(:reading_speed) { 250 }
 
   it "should calculate the reading time of some text" do
     two_hundred_words.reading_time.should == "01:00"
@@ -64,6 +65,13 @@ describe Readingtime do
     ten_words.reading_time(:format => :approx).should == "3 seconds"
     three_hundred_words.reading_time(:format => :full).should == '1 min 33 secs'
     two_hundred_words.reading_time(:format => :raw).should == [0, 1, 0]
+  end
+
+  it "should use reading speed from configuration" do
+    Readingtime.configure do |config|
+      config.reading_speed = reading_speed
+    end
+    Readingtime.configuration.reading_speed.should == reading_speed
   end
 
 end
