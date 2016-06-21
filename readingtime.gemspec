@@ -18,7 +18,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rake', '~> 10.5.0' if RUBY_VERSION < '1.9.3' # see: https://github.com/travis-ci/travis.rb/issues/380
+  s.add_development_dependency 'rake'              unless RUBY_VERSION < '1.9.3'
   s.add_development_dependency "rspec", "~>2.6"
 
 end
