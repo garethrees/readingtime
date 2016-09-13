@@ -4,9 +4,20 @@ Dir[File.dirname(__FILE__) + '/readingtime/*.rb'].each do |file|
 end
 
 module Readingtime
-  #TODO: move this to a configuration object
+  class << self
+    attr_accessor :configuration
+  end
+
+  def self.configure
+    yield(configuration)
+  end
+
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
+
   def self.reading_speed
-    200
+    configuration.reading_speed
   end
 
   def self.hms(secs)

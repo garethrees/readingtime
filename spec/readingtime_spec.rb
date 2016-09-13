@@ -3,7 +3,6 @@ path = File.expand_path(File.dirname(__FILE__) + "/../lib/")
 $LOAD_PATH.unshift(path) unless $LOAD_PATH.include?(path)
 require "readingtime"
 
-
 describe Readingtime do
   let(:two_hundred_words) { ("Lorem " * 200) }
   let(:three_hundred_words) { ("Lorem " * 300) }
@@ -64,6 +63,22 @@ describe Readingtime do
     ten_words.reading_time(:format => :approx).should == "3 seconds"
     three_hundred_words.reading_time(:format => :full).should == '1 min 33 secs'
     two_hundred_words.reading_time(:format => :raw).should == [0, 1, 0]
+  end
+
+  it 'should use the default reading speed from configuration' do
+    Readingtime.reading_speed.should == 200
+  end
+
+  it "should use reading speed from configuration" do
+    Readingtime.configure do |config|
+      config.reading_speed = 250
+    end
+
+    Readingtime.reading_speed.should == 250
+
+    Readingtime.configure do |config|
+      config.reading_speed = 200
+    end
   end
 
 end
