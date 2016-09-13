@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 module Readingtime
   class Calculator
     attr_reader :reading_speed

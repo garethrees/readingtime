@@ -1,3 +1,4 @@
+# encoding: utf-8
 String.class_eval do
   def reading_time(options = {})
     calculator = options[:calculator] || Readingtime::Calculator.new
